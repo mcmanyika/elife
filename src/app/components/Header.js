@@ -14,11 +14,6 @@ export default function Header() {
                 About
                 </Link>
               </li>
-              <li>
-                <Link href="/">
-                  Events
-                </Link>
-              </li>
               
               <li>
                 <Link href="/contact">
