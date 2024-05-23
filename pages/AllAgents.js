@@ -53,7 +53,7 @@ export default function AllAgents() {
                 <div className='grid grid-cols-4 gap-2'>
                     {currentAgents.map((agent, index) => (
                         <div key={index}>
-                            <AgentCard fname={agent.fname} lname={agent.lname} image={agent.image} website={agent.website} />
+                            <AgentCard fname={agent.fname} lname={agent.lname} image={agent.image} phone={agent.phone} />
                         </div>
                     ))}
                 </div>
@@ -68,7 +68,7 @@ export default function AllAgents() {
     );
 }
 
-function AgentCard({ fname, lname, image, website }) {
+function AgentCard({ fname, lname, image, phone }) {
     return (
         <div className='flex p-4 rounded m-2'>
             {image ? (
@@ -91,13 +91,9 @@ function AgentCard({ fname, lname, image, website }) {
                 </div>
             </div>
             <div className='w-full md:w-1/4 flex items-center justify-end'>
-                <a 
-                    href={website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-gray-600 text-white text-center text-xs py-2 px-3 rounded"
-                >
-                    Book Appointment
+            <a href={`https://web.whatsapp.com/send?phone=${phone}`} target="_blank" rel="noopener noreferrer"
+            className="bg-gray-600 text-white text-center text-xs py-2 px-3 rounded">
+                    WhatsApp Agent
                 </a>
             </div>
         </div>
