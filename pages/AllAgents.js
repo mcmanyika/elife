@@ -53,7 +53,7 @@ export default function AllAgents() {
                 <div className='grid grid-cols-4 gap-2'>
                     {currentAgents.map((agent, index) => (
                         <div key={index}>
-                            <AgentCard fname={agent.fname} lname={agent.lname} />
+                            <AgentCard fname={agent.fname} lname={agent.lname} image={agent.image} website={agent.website} />
                         </div>
                     ))}
                 </div>
@@ -68,20 +68,23 @@ export default function AllAgents() {
     );
 }
 
-function AgentCard({ fname, lname }) {
+function AgentCard({ fname, lname, image, website }) {
     return (
         <div className='flex p-4 rounded m-2'>
-            <div className='w-full md:w-1/4'>
-                <div className="relative w-24 h-24 rounded-full overflow-hidden">
-                    <Image src="/images/banner.png" alt="Person" layout="fill" objectFit="cover" />
+            {image ? (
+                <div className='hidden md:block w-full md:w-1/4'>
+                    <div className="relative w-24 h-24 rounded-full overflow-hidden">
+                        <Image src={image} alt="Person" layout="fill" objectFit="cover" />
+                    </div>
                 </div>
-            </div>
+            ) : null}
+
             <div className='w-full md:w-2/4'>
                 <div className=' text-gray-500 mb-2'>{fname} {lname}</div>
                 <div className="flex">
-                    <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+                    {/* <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
                         <BsFacebook size={18} className="text-gray-400 mx-2" aria-label="Facebook" />
-                    </a>
+                    </a> */}
                     <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
                         <FaLinkedin size={18} className="text-gray-400 mx-2" aria-label="LinkedIn" />
                     </a>
@@ -89,7 +92,7 @@ function AgentCard({ fname, lname }) {
             </div>
             <div className='w-full md:w-1/4 flex items-center justify-end'>
                 <a 
-                    href="https://agents.worldfinancialgroup.com/Partson-Manyika-C2G1G"
+                    href={website}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-gray-600 text-white text-center text-xs py-2 px-3 rounded"
