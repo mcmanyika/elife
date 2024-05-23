@@ -32,8 +32,8 @@ export default function EventList() {
     return (
         <main className='flex flex-col items-center'>
         {/* <h1 className='text-2xl text-gray-400  p-4'>Upcoming Events</h1> */}
-        <ul className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 p-3 gap-4 w-full'>
-            {events.map(event => (
+        <ul className='grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-5 p-3 gap-4 w-full'>
+            {events.slice(0,5).map(event => (
                 <li key={event.id} className='border p-4 rounded'>
                     <div className='w-full h-96 mb-2 relative'>
                     <a href={`https://web.whatsapp.com/send?phone=${event.hostPhone}`} target="_blank" rel="noopener noreferrer">
