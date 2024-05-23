@@ -31,7 +31,6 @@ export default function EventList() {
 
     return (
         <main className='flex flex-col items-center'>
-        {/* <h1 className='text-2xl text-gray-400  p-4'>Upcoming Events</h1> */}
         <ul className='grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-5 p-3 gap-4 w-full'>
             {events.slice(0,5).map(event => (
                 <li key={event.id} className='border p-4 rounded'>
