@@ -73,7 +73,7 @@ function AgentCard({ fname, lname, image, phone }) {
         <div className='flex p-4 rounded m-2'>
             {image ? (
                 <div className='hidden md:block w-full md:w-1/4'>
-                    <div className="relative w-24 h-24 rounded-full overflow-hidden">
+                    <div className="relative w-20 h-20 rounded-full overflow-hidden">
                         <Image src={image} alt="Person" layout="fill" objectFit="cover" />
                     </div>
                 </div>
