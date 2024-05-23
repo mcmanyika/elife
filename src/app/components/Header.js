@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { BsFacebook } from "react-icons/bs";
 import Link from "next/link";
 
 export default function Header() {
@@ -24,6 +24,11 @@ export default function Header() {
                 <Link href="/contact">
                 Contact
                 </Link>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/groups/1435433233769041/" target="_blank" rel="noopener noreferrer">
+                    <BsFacebook size={30} className="text-gray-400 mx-2" aria-label="Facebook" />
+                </a>
               </li>
             </ul>
           </nav>

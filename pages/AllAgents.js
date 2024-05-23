@@ -70,7 +70,7 @@ export default function AllAgents() {
 
 function AgentCard({ fname, lname }) {
     return (
-        <div className='flex p-4 rounded m-2 '>
+        <div className='flex p-4 rounded m-2'>
             <div className='w-full md:w-1/4'>
                 <div className="relative w-24 h-24 rounded-full overflow-hidden">
                     <Image src="/images/banner.png" alt="Person" layout="fill" objectFit="cover" />
