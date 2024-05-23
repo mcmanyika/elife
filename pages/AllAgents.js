@@ -53,7 +53,7 @@ export default function AllAgents() {
                 <div className='grid grid-cols-4 gap-2'>
                     {currentAgents.map((agent, index) => (
                         <div key={index}>
-                            <AgentCard fname={agent.fname} lname={agent.lname} image={agent.image} phone={agent.phone} />
+                            <AgentCard fname={agent.fname} lname={agent.lname} image={agent.image} phone={agent.phone} linkedin={agent.linkedin} />
                         </div>
                     ))}
                 </div>
@@ -68,7 +68,7 @@ export default function AllAgents() {
     );
 }
 
-function AgentCard({ fname, lname, image, phone }) {
+function AgentCard({ fname, lname, image, phone, linkedin }) {
     return (
         <div className='flex p-4 rounded m-2'>
             {image ? (
@@ -80,12 +80,9 @@ function AgentCard({ fname, lname, image, phone }) {
             ) : null}
 
             <div className='w-full md:w-2/4'>
-                <div className=' text-gray-500 mb-2'>{fname} {lname}</div>
+                <div className='text-sm font-light text-gray-500 mb-2'>{fname} {lname}</div>
                 <div className="flex">
-                    {/* <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-                        <BsFacebook size={18} className="text-gray-400 mx-2" aria-label="Facebook" />
-                    </a> */}
-                    <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+                    <a href={linkedin} target="_blank" rel="noopener noreferrer">
                         <FaLinkedin size={18} className="text-gray-400 mx-2" aria-label="LinkedIn" />
                     </a>
                 </div>
