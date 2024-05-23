@@ -31,7 +31,7 @@ export default function EventList() {
 
     return (
         <main className='flex flex-col items-center'>
-        <h1 className='text-2xl p-4'>Upcoming Events</h1>
+        <h1 className='text-2xl text-gray-400  p-4'>Upcoming Events</h1>
         <ul className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 p-3 gap-4 w-full'>
             {events.map(event => (
                 <li key={event.id} className='border p-4 rounded'>
@@ -43,12 +43,14 @@ export default function EventList() {
                             className='rounded' 
                         />
                     </div>
-                    <p><strong>Date:</strong> {event.eventDate}</p>
-                    <p><strong>Time:</strong> {event.eventTime}</p>
-                    <p><strong>Host:</strong> {event.hostName}</p>
-                    <p><strong>Phone:</strong> <a href={`https://web.whatsapp.com/send?phone=${event.hostPhone}`} target="_blank" rel="noopener noreferrer">{event.hostPhone}</a></p>
+                    <div className='text-sm text-gray-600'>
+                        <p><strong>Date:</strong> {event.eventDate}</p>
+                        <p><strong>Time:</strong> {event.eventTime}</p>
+                        <p><strong>Host:</strong> {event.hostName}</p>
+                        <p><strong>WhatsApp Number:</strong> <a href={`https://web.whatsapp.com/send?phone=${event.hostPhone}`} target="_blank" rel="noopener noreferrer">{event.hostPhone}</a></p>
 
-                    <p><strong>Zoom Link:</strong> <a href={event.zoomLink} target="_blank" rel="noopener noreferrer">{event.zoomLink}</a></p>
+                        <p><strong>Zoom Link:</strong> <a href={event.zoomLink} target="_blank" rel="noopener noreferrer">{event.zoomLink}</a></p>
+                    </div>
                 </li>
             ))}
         </ul>
