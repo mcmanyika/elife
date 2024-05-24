@@ -49,7 +49,7 @@ export default function AllAgents() {
             </div>
             <div className='mx-auto pb-10'>
                 <Ad />
-                <p className=" text-sm text-center  font-thin p-5">Featured Agents</p>
+                <p className=" text-sm text-center  font-thin p-5">Featured Insurence Agents</p>
                 <div className='grid grid-cols-3 md:grid-cols-4 gap-2'>
                 {currentAgents.map((agent, index) => (
                     <div key={index}>
