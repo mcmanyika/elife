@@ -50,13 +50,20 @@ export default function AllAgents() {
             <div className='mx-auto pb-10'>
                 <Ad />
                 <p className=" text-sm text-center  font-thin p-5">Featured Agents</p>
-                <div className='grid grid-cols-4 gap-2'>
-                    {currentAgents.map((agent, index) => (
-                        <div key={index}>
-                            <AgentCard fname={agent.fname} lname={agent.lname} image={agent.image} phone={agent.phone} linkedin={agent.linkedin} />
-                        </div>
-                    ))}
-                </div>
+                <div className='grid grid-cols-3 md:grid-cols-4 gap-2'>
+                {currentAgents.map((agent, index) => (
+                    <div key={index}>
+                        <AgentCard 
+                            fname={agent.fname} 
+                            lname={agent.lname} 
+                            image={agent.image} 
+                            phone={agent.phone} 
+                            linkedin={agent.linkedin} 
+                        />
+                    </div>
+                ))}
+            </div>
+
                 <Pagination
                     agentsPerPage={agentsPerPage}
                     totalAgents={filteredAgents.length}
@@ -70,30 +77,32 @@ export default function AllAgents() {
 
 function AgentCard({ fname, lname, image, phone, linkedin }) {
     return (
-        <div className='flex p-4 rounded m-2'>
-            {image ? (
-                <div className='hidden md:block w-full md:w-1/4'>
-                    <div className="relative w-20 h-20 rounded-full overflow-hidden">
-                        <Image src={image} alt="Person" layout="fill" objectFit="cover" />
-                    </div>
-                </div>
-            ) : null}
-
-            <div className='w-full md:w-2/4'>
-                <div className='text-sm font-light text-gray-500 mb-2'>{fname} {lname}</div>
-                <div className="flex">
-                    <a href={linkedin} target="_blank" rel="noopener noreferrer">
-                        <FaLinkedin size={18} className="text-gray-400 mx-2" aria-label="LinkedIn" />
-                    </a>
-                </div>
-            </div>
-            <div className='w-full md:w-1/4 flex items-center justify-end'>
-            <a href={`https://web.whatsapp.com/send?phone=${phone}`} target="_blank" rel="noopener noreferrer"
-            className="bg-gray-600 text-white text-center text-xs py-2 px-3 rounded">
-                    WhatsApp Agent
-                </a>
+        <div className='flex flex-col md:flex-row p-4 rounded m-2'>
+    {image ? (
+        <div className='md:block w-full md:w-1/4'>
+            <div className="relative w-20 h-20 rounded-full overflow-hidden">
+                <Image src={image} alt="Person" layout="fill" objectFit="cover" />
             </div>
         </div>
+    ) : null}
+
+    <div className='w-full md:w-2/4'>
+        <div className='text-sm font-light text-gray-500 mb-2'>{fname} {lname}</div>
+        <div className="flex">
+            <a href={linkedin} target="_blank" rel="noopener noreferrer">
+                <FaLinkedin size={18} className="text-gray-400 mx-2" aria-label="LinkedIn" />
+            </a>
+        </div>
+    </div>
+    
+    <div className='w-full md:w-1/4 flex items-center'>
+        <a href={`https://web.whatsapp.com/send?phone=${phone}`} target="_blank" rel="noopener noreferrer"
+           className="bg-gray-600 text-white text-center text-xs py-2 px-3 rounded">
+            WhatsApp Agent
+        </a>
+    </div>
+</div>
+
     );
 }
 
