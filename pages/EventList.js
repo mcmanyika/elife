@@ -56,7 +56,7 @@ export default function EventList() {
                     {events.map(event => (
                         <div 
                             key={event.id} 
-                            className='inline-block border p-4 rounded mr-4' 
+                            className='inline-block  p-2 rounded mr-4' 
                             style={{ minWidth: '300px' }}
                         >
                             <div className='w-full h-96 mb-2 relative'>
