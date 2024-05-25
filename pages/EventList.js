@@ -43,6 +43,8 @@ export default function EventList() {
     return (
         <div className='flex flex-col items-center'>
             <div className='relative w-full'>
+
+            <div className='p-3 text-xs text-gray-500'>Life Insurence with Living Benefits</div>
                 <button 
                     onClick={scrollLeft} 
                     className='absolute left-0 top-1/2 transform -translate-y-1/2 p-4 z-10 text-7xl text-white'
@@ -51,8 +53,8 @@ export default function EventList() {
                 </button>
                 <div 
                     ref={scrollContainerRef} 
-                    className='w-full overflow-x-scroll overflow-y-hidden whitespace-nowrap py-3 example scroll-smooth'
-                >
+                    className='w-full overflow-x-scroll overflow-y-hidden whitespace-nowrap  example scroll-smooth'
+                > 
                     {events.map(event => (
                         <div 
                             key={event.id} 
