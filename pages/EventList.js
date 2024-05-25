@@ -53,7 +53,7 @@ export default function EventList() {
                     ref={scrollContainerRef} 
                     className='w-full overflow-x-scroll overflow-y-hidden whitespace-nowrap py-3 example scroll-smooth'
                 >
-                    {events.slice(0, 10).map(event => (
+                    {events.map(event => (
                         <div 
                             key={event.id} 
                             className='inline-block border p-4 rounded mr-4' 

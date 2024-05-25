@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { ref, onValue } from 'firebase/database';
 import { database } from '../firebaseConfig';
 import { BsFacebook } from "react-icons/bs";
@@ -13,6 +13,7 @@ export default function AllAgents() {
     const [currentPage, setCurrentPage] = useState(1);
     const [agentsPerPage] = useState(4); // Change this number according to your preference
     const [searchTerm, setSearchTerm] = useState('');
+    const scrollContainerRef = useRef(null);
 
     useEffect(() => {
         const agencyRef = ref(database, 'agency');
@@ -40,6 +41,18 @@ export default function AllAgents() {
 
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
+    const scrollLeft = () => {
+        if (scrollContainerRef.current) {
+            scrollContainerRef.current.scrollBy({ left: -300, behavior: 'smooth' });
+        }
+    };
+
+    const scrollRight = () => {
+        if (scrollContainerRef.current) {
+            scrollContainerRef.current.scrollBy({ left: 300, behavior: 'smooth' });
+        }
+    };
+
     return (
         <div className='w-full bg-white'>
             <div className='w-full bg-slate-300'>
@@ -49,20 +62,37 @@ export default function AllAgents() {
             </div>
             <div className='mx-auto pb-10'>
                 <Ad />
-                <p className=" text-sm text-center  font-thin p-5">Featured Insurence Agents</p>
-                <div className='grid grid-cols-3 md:grid-cols-4 gap-2'>
-                {currentAgents.map((agent, index) => (
-                    <div key={index}>
-                        <AgentCard 
-                            fname={agent.fname} 
-                            lname={agent.lname} 
-                            image={agent.image} 
-                            phone={agent.phone} 
-                            linkedin={agent.linkedin} 
-                        />
+                <p className="text-sm text-center font-thin p-5">Featured Insurance Agents</p>
+                <div className='relative w-full'>
+                    <button 
+                        onClick={scrollLeft} 
+                        className='absolute left-3 top-1/2 transform -translate-y-1/2 z-10 text-7xl text-gray-200'
+                    >
+                        &#8249;
+                    </button>
+                    <div 
+                        ref={scrollContainerRef} 
+                        className='flex overflow-x-scroll overflow-y-hidden whitespace-nowrap py-3 example scroll-smooth'
+                    >
+                        {currentAgents.map((agent, index) => (
+                            <div key={index} className='inline-block  p-4 rounded mr-4' style={{ minWidth: '250px' }}>
+                                <AgentCard 
+                                    fname={agent.fname} 
+                                    lname={agent.lname} 
+                                    image={agent.image} 
+                                    phone={agent.phone} 
+                                    linkedin={agent.linkedin} 
+                                />
+                            </div>
+                        ))}
                     </div>
-                ))}
-            </div>
+                    <button 
+                        onClick={scrollRight} 
+                        className='absolute right-3 top-1/2 transform -translate-y-1/2 z-10 text-7xl text-gray-200'
+                    >
+                        &#8250;
+                    </button>
+                </div>
 
                 <Pagination
                     agentsPerPage={agentsPerPage}
@@ -78,31 +108,28 @@ export default function AllAgents() {
 function AgentCard({ fname, lname, image, phone, linkedin }) {
     return (
         <div className='flex flex-col md:flex-row p-4 rounded m-2'>
-    {image ? (
-        <div className='md:block w-full md:w-1/4'>
-            <div className="relative w-20 h-20 rounded-full overflow-hidden">
-                <Image src={image} alt="Person" layout="fill" objectFit="cover" />
+            {image ? (
+                <div className='md:block w-full md:w-1/4'>
+                    <div className="relative w-20 h-20 rounded-full overflow-hidden">
+                        <Image src={image} alt="Person" layout="fill" objectFit="cover" />
+                    </div>
+                </div>
+            ) : null}
+            <div className='w-full md:w-2/4'>
+                <div className='text-sm font-light text-gray-500 mb-2'>{fname} {lname}</div>
+                <div className="flex">
+                    <a href={linkedin} target="_blank" rel="noopener noreferrer">
+                        <FaLinkedin size={18} className="text-gray-400 mx-2" aria-label="LinkedIn" />
+                    </a>
+                </div>
+            </div>
+            <div className='w-full md:w-1/4 flex items-center'>
+                <a href={`https://web.whatsapp.com/send?phone=${phone}`} target="_blank" rel="noopener noreferrer"
+                   className="bg-gray-600 text-white text-center text-xs py-2 px-3 rounded">
+                    WhatsApp Agent
+                </a>
             </div>
         </div>
-    ) : null}
-
-    <div className='w-full md:w-2/4'>
-        <div className='text-sm font-light text-gray-500 mb-2'>{fname} {lname}</div>
-        <div className="flex">
-            <a href={linkedin} target="_blank" rel="noopener noreferrer">
-                <FaLinkedin size={18} className="text-gray-400 mx-2" aria-label="LinkedIn" />
-            </a>
-        </div>
-    </div>
-    
-    <div className='w-full md:w-1/4 flex items-center'>
-        <a href={`https://web.whatsapp.com/send?phone=${phone}`} target="_blank" rel="noopener noreferrer"
-           className="bg-gray-600 text-white text-center text-xs py-2 px-3 rounded">
-            WhatsApp Agent
-        </a>
-    </div>
-</div>
-
     );
 }
 
