@@ -1,12 +1,12 @@
 'use client'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { ref, onValue } from 'firebase/database';
 import { database } from '../firebaseConfig';
 import Image from 'next/image';
 
-
 export default function EventList() {
     const [events, setEvents] = useState([]);
+    const scrollContainerRef = useRef(null);
 
     useEffect(() => {
         const eventsRef = ref(database, 'events');
@@ -20,7 +20,6 @@ export default function EventList() {
                 // Sort events by date in descending order
                 parsedData.sort((a, b) => new Date(b.eventDate) - new Date(a.eventDate));
                 setEvents(parsedData);
-
             } else {
                 setEvents([]);
             }
@@ -29,32 +28,57 @@ export default function EventList() {
         return () => unsubscribe();
     }, []);
 
-    return (
-        <main className='flex flex-col items-center'>
-        <ul className='grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-5 p-3 gap-4 w-full'>
-            {events.slice(0,5).map(event => (
-                <li key={event.id} className='border p-4 rounded'>
-                    <div className='w-full h-96 mb-2 relative'>
-                    <a href={`https://web.whatsapp.com/send?phone=${event.hostPhone}`} target="_blank" rel="noopener noreferrer">
-                        <Image 
-                            src={event.eventImage} 
-                            alt={event.eventTitle} 
-                            layout='fill' 
-                            className='rounded' 
-                        />
-                        </a>
-                    </div>
-                    {/* <div className='text-sm text-gray-600'>
-                        <p><strong>Date:</strong> {event.eventDate}</p>
-                        <p><strong>Time:</strong> {event.eventTime}</p>
-                        <p><strong>Host:</strong> {event.hostName}</p>
-                        <p><strong>WhatsApp Number:</strong> <a href={`https://web.whatsapp.com/send?phone=${event.hostPhone}`} target="_blank" rel="noopener noreferrer">{event.hostPhone}</a></p>
+    const scrollLeft = () => {
+        if (scrollContainerRef.current) {
+            scrollContainerRef.current.scrollBy({ left: -300, behavior: 'smooth' });
+        }
+    };
 
-                        <p><strong>Zoom Link:</strong> <a href={event.zoomLink} target="_blank" rel="noopener noreferrer">{event.zoomLink}</a></p>
-                    </div> */}
-                </li>
-            ))}
-        </ul>
-    </main>
+    const scrollRight = () => {
+        if (scrollContainerRef.current) {
+            scrollContainerRef.current.scrollBy({ left: 300, behavior: 'smooth' });
+        }
+    };
+
+    return (
+        <div className='flex flex-col items-center'>
+            <div className='relative w-full'>
+                <button 
+                    onClick={scrollLeft} 
+                    className='absolute left-0 top-1/2 transform -translate-y-1/2 p-4 z-10 text-7xl text-white'
+                >
+                    &#8249;
+                </button>
+                <div 
+                    ref={scrollContainerRef} 
+                    className='w-full overflow-x-scroll overflow-y-hidden whitespace-nowrap py-3 example scroll-smooth'
+                >
+                    {events.slice(0, 10).map(event => (
+                        <div 
+                            key={event.id} 
+                            className='inline-block border p-4 rounded mr-4' 
+                            style={{ minWidth: '300px' }}
+                        >
+                            <div className='w-full h-96 mb-2 relative'>
+                                <a href={`https://web.whatsapp.com/send?phone=${event.hostPhone}`} target="_blank" rel="noopener noreferrer">
+                                    <Image 
+                                        src={event.eventImage} 
+                                        alt={event.eventTitle} 
+                                        layout='fill' 
+                                        className='rounded' 
+                                    />
+                                </a>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+                <button 
+                    onClick={scrollRight} 
+                    className='absolute right-0 top-1/2 transform -translate-y-1/2 p-4 z-10 text-7xl text-white'
+                >
+                    &#8250;
+                </button>
+            </div>
+        </div>
     );
 }
