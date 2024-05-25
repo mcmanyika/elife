@@ -22,7 +22,7 @@ export default function Header() {
               </li>
               <li>
                 <a href="https://www.facebook.com/groups/1435433233769041/" target="_blank" rel="noopener noreferrer">
-                    <BsFacebook size={30} className="text-gray-400 mx-2" aria-label="Facebook" />
+                    <BsFacebook size={25} className="text-gray-400 mx-2" aria-label="Facebook" />
                 </a>
               </li>
             </ul>

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ref, push, set } from 'firebase/database';
 import { database } from '../firebaseConfig';
+import Layout from '../src/app/components/Layout'
 
 export default function AddEvent() {
     const [eventTitle, setEventTitle] = useState("");
@@ -54,7 +55,8 @@ export default function AddEvent() {
     };
 
     return (
-        <main className='flex flex-col items-center'>
+        <Layout>
+        <div className='flex flex-col items-center h-screen pt-52'>
             <div className='mb-4 w-full max-w-xs'>
                 <input 
                     type='text'
@@ -112,6 +114,7 @@ export default function AddEvent() {
             >
                 Add Event
             </button>
-        </main>
+        </div>
+        </Layout>
     );
 }

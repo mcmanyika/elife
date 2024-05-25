@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { ref, push, set } from 'firebase/database';
 import { database } from '../../../firebaseConfig'; // Adjust the path to your actual Firebase config file
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Subscribe() {
   const [mobileNumber, setMobileNumber] = useState('');
@@ -10,7 +12,7 @@ export default function Subscribe() {
     event.preventDefault();
 
     if (mobileNumber.trim() === '') {
-      alert('Mobile number is required.');
+      toast.error('Mobile number is required.');
       return;
     }
 
@@ -24,10 +26,10 @@ export default function Subscribe() {
       });
 
       setMobileNumber('');
-      alert('Subscribed successfully');
+      toast.success('Subscribed successfully');
     } catch (error) {
       console.error('Firebase Error:', error);
-      alert('Failed to subscribe.');
+      toast.error('Failed to subscribe.');
     }
   };
 
@@ -56,6 +58,18 @@ export default function Subscribe() {
           </form>
         </div>
       </div>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </div>
   );
 }
