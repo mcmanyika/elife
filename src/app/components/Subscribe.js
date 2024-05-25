@@ -33,9 +33,9 @@ export default function Subscribe() {
 
   return (
     <div className='w-full bg-white p-4'>
-      <div className='max-w-4xl mx-auto'>
+      <div className='max-w-5xl mx-auto'>
         <div className='flex flex-col md:flex-row items-center'>
-          <div className='text-2xl p-3 flex-1'>
+          <div className=' text-xl p-3 flex-1 uppercase'>
             Subscribe to Events Notifications
           </div>
           <form onSubmit={handleSubscribe} className='flex-1 flex items-center'>
