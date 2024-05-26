@@ -59,7 +59,7 @@ export default function EventList() {
                         <div 
                             key={event.id} 
                             className='inline-block  p-2 rounded mr-4' 
-                            style={{ minWidth: '300px' }}
+                            style={{ minWidth: '320px' }}
                         >
                             <div className='w-full h-96 mb-2 relative'>
                                 <a href={`https://web.whatsapp.com/send?phone=${event.hostPhone}`} target="_blank" rel="noopener noreferrer">

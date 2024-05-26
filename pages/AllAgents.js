@@ -11,7 +11,7 @@ import Ad from '../src/app/components/Ad'
 export default function AllAgents() {
     const [agents, setAgents] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [agentsPerPage] = useState(4); // Change this number according to your preference
+    const [agentsPerPage] = useState(10); // Change this number according to your preference
     const [searchTerm, setSearchTerm] = useState('');
     const scrollContainerRef = useRef(null);
 
@@ -75,7 +75,7 @@ export default function AllAgents() {
                         className='flex overflow-x-scroll overflow-y-hidden whitespace-nowrap py-3 example scroll-smooth'
                     >
                         {currentAgents.map((agent, index) => (
-                            <div key={index} className='inline-block  p-4 rounded mr-4' style={{ minWidth: '250px' }}>
+                            <div key={index} className='inline-block  p-4 rounded mr-4'>
                                 <AgentCard 
                                     fname={agent.fname} 
                                     lname={agent.lname} 
