@@ -7,7 +7,7 @@ export default function Header() {
     <div>
         <header className="w-full bg-gray-200 fixed top-0 z-10">
           <nav className="flex items-center justify-between max-w-6xl mx-auto  h-20">
-            <div className="text-xl font-bold">extraPAY</div>
+            <div className="text-xl font-bold pl-2">extraPAY</div>
             <ul className="flex space-x-4 text-sm">
             <li>
                 <Link href="/about">
