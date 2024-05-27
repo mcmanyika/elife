@@ -3,8 +3,8 @@ import Image from 'next/image';
 
 export default function Ad() {
   return (
-    <div className="flex justify-center pt-5">
-        <div className="relative w-[650px] h-[100px]">
+    <div className="flex justify-center p-5">
+        <div className="relative w-[400px] h-[60px] md:w-[650px] md:h-[100px]">
             <Image 
                 src="/images/b1.png" 
                 alt="Person" 

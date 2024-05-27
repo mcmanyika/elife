@@ -56,13 +56,13 @@ export default function AllAgents() {
     return (
         <div className='w-full bg-white'>
             <div className='w-full bg-slate-300'>
-                <div className='max-w-5xl mx-auto pt-15'>
+                <div className='w-full md:max-w-5xl mx-auto pt-15'>
                     <SearchBox setSearchTerm={setSearchTerm} />
                 </div>
             </div>
             <div className='mx-auto'>
                 <Ad />
-                <p className="text-xs text-center font-thin p-5">Featured Insurance Agents</p>
+                <p className="text-xs text-center font-thin pt-5">Featured Insurance Agents</p>
                 <div className='relative w-full'>
                     <button 
                         onClick={scrollLeft} 
@@ -75,7 +75,7 @@ export default function AllAgents() {
                         className='flex overflow-x-scroll overflow-y-hidden whitespace-nowrap py-3 example scroll-smooth'
                     >
                         {currentAgents.map((agent, index) => (
-                            <div key={index} className='inline-block  p-4 rounded mr-4'>
+                            <div key={index} className='inline-block p-2 rounded mr-4'>
                                 <AgentCard 
                                     fname={agent.fname} 
                                     lname={agent.lname} 
