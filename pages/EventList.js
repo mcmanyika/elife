@@ -41,7 +41,7 @@ export default function EventList() {
     };
 
     return (
-        <div className='flex flex-col items-center'>
+        <div className='flex flex-col items-center pb-6'>
             <div className='relative w-full'>
 
             <div className='p-3 text-xs text-gray-500'>Life Insurence with Living Benefits</div>
