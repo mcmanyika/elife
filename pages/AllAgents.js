@@ -56,13 +56,13 @@ export default function AllAgents() {
     return (
         <div className='w-full bg-white'>
             <div className='w-full bg-slate-300'>
-                <div className='max-w-5xl mx-auto pt-20'>
+                <div className='max-w-5xl mx-auto pt-15'>
                     <SearchBox setSearchTerm={setSearchTerm} />
                 </div>
             </div>
-            <div className='mx-auto pb-10'>
+            <div className='mx-auto'>
                 <Ad />
-                <p className="text-sm text-center font-thin p-5">Featured Insurance Agents</p>
+                <p className="text-xs text-center font-thin p-5">Featured Insurance Agents</p>
                 <div className='relative w-full'>
                     <button 
                         onClick={scrollLeft} 
@@ -125,7 +125,7 @@ function AgentCard({ fname, lname, image, phone, linkedin }) {
             </div>
             <div className='w-full md:w-1/4 flex items-center'>
                 <a href={`https://web.whatsapp.com/send?phone=${phone}`} target="_blank" rel="noopener noreferrer"
-                   className="bg-gray-600 text-white text-center text-xs py-2 px-3 rounded">
+                   className="bg-gray-600 text-white text-center text-xs p-1 m-2 rounded">
                     WhatsApp Agent
                 </a>
             </div>
