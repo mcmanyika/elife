@@ -2,7 +2,7 @@ import React from 'react'
 import { BsFacebook } from "react-icons/bs";
 import Link from "next/link";
 
-export default function Header() {
+export default function Header({loggedIn, login, logout}) {
   return (
     <div>
         <header className="w-full bg-gray-200 fixed top-0 z-10">
@@ -20,6 +20,13 @@ export default function Header() {
                 Contact
                 </Link>
               </li>
+              <li>
+              {!loggedIn ? (
+                <button onClick={login} className="card">Sign In</button>
+              ) : (
+                <button onClick={logout} className="card">Logout</button>
+              )}
+            </li>
               <li>
                 <a href="https://www.facebook.com/groups/1435433233769041/" target="_blank" rel="noopener noreferrer">
                     <BsFacebook size={25} className="text-gray-400 mx-2" aria-label="Facebook" />
