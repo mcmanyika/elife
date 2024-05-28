@@ -79,7 +79,6 @@ export default function Home() {
       await web3auth.logout();
       setProvider(null);
       setLoggedIn(false);
-      uiConsole("logged out");
     } catch (error) {
       console.error("Logout failed", error);
     }
