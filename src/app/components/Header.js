@@ -22,7 +22,7 @@ export default function Header({loggedIn, login, logout}) {
               </li>
               <li>
               {!loggedIn ? (
-                <button onClick={login} className="card">Sign In</button>
+                <button onClick={login} className="card"></button>
               ) : (
                 <button onClick={logout} className="card">Logout</button>
               )}
