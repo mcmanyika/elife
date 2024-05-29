@@ -62,7 +62,7 @@ export default function AllAgents() {
             </div>
             <div className='mx-auto'>
                 <Ad />
-                <p className="text-xs text-center font-thin pt-5">Featured Insurance Agents</p>
+                <p className="text-xs text-center font-thin pt-5">Featured Agents</p>
                 <div className='relative w-full'>
                     <button 
                         onClick={scrollLeft} 
