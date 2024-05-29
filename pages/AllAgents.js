@@ -3,10 +3,11 @@ import { useState, useEffect, useRef } from 'react';
 import { ref, onValue } from 'firebase/database';
 import { database } from '../firebaseConfig';
 import { BsFacebook } from "react-icons/bs";
-import { FaLinkedin } from "react-icons/fa";
+import { FaFacebook, FaLinkedin } from "react-icons/fa";
 import Image from 'next/image';
 import SearchBox from './SearchBox'; // Adjust the path as necessary
 import Ad from '../src/app/components/Ad'
+import { FaInstagram } from 'react-icons/fa6';
 
 export default function AllAgents() {
     const [agents, setAgents] = useState([]);
@@ -109,25 +110,27 @@ function AgentCard({ fname, lname, image, phone, linkedin }) {
     return (
         <div className='flex flex-col md:flex-row p-4 rounded m-2'>
             {image ? (
-                <div className='md:block w-full md:w-1/4'>
+                <div className='w-full'>
                     <div className="relative w-20 h-20 rounded-full overflow-hidden">
                         <Image src={image} alt="Person" layout="fill" objectFit="cover" />
                     </div>
                 </div>
             ) : null}
-            <div className='w-full md:w-2/4'>
-                <div className='text-sm font-light text-gray-500 mb-2'>{fname} {lname}</div>
+            <div className='w-full'>
+                <div className='text-sm font-light text-gray-500 mb-2'>
+                <a href={`https://web.whatsapp.com/send?phone=${phone}`} target="_blank" rel="noopener noreferrer"
+                   >{fname} {lname}</a></div>
                 <div className="flex">
                     <a href={linkedin} target="_blank" rel="noopener noreferrer">
                         <FaLinkedin size={18} className="text-gray-400 mx-2" aria-label="LinkedIn" />
                     </a>
+                    <a href={linkedin} target="_blank" rel="noopener noreferrer">
+                        <FaFacebook size={18} className="text-gray-400 mx-2" aria-label="Facebook" />
+                    </a>
+                    <a href={linkedin} target="_blank" rel="noopener noreferrer">
+                        <FaInstagram size={18} className="text-gray-400 mx-2" aria-label="Instagram" />
+                    </a>
                 </div>
-            </div>
-            <div className='w-full md:w-1/4 flex items-center'>
-                <a href={`https://web.whatsapp.com/send?phone=${phone}`} target="_blank" rel="noopener noreferrer"
-                   className="bg-gray-600 text-white text-center text-xs p-1 m-2 rounded">
-                    WhatsApp Agent
-                </a>
             </div>
         </div>
     );
