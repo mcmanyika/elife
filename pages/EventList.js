@@ -44,7 +44,7 @@ export default function EventList() {
         <div className='flex flex-col items-center pb-6'>
             <div className='relative w-full'>
 
-            <div className='p-3 text-xs text-gray-500'>Life Insurence Living Benefits</div>
+            <div className='p-3 text-xs text-gray-500'>Life Insurance Living Benefits</div>
                 <button 
                     onClick={scrollLeft} 
                     className='absolute left-0 top-1/2 transform -translate-y-1/2 p-4 z-10 text-7xl text-white'
