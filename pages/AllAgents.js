@@ -115,7 +115,13 @@ function AgentCard({ fname, lname, image, phone, linkedin }) {
                         <Image src={image} alt="Person" layout="fill" objectFit="cover" />
                     </div>
                 </div>
-            ) : null}
+            ) : (
+                <div className='w-full'>
+                    <div className="relative w-20 h-20 rounded-full overflow-hidden">
+                        &nbsp;
+                    </div>
+                </div>
+            )}
             <div className='w-full'>
                 <div className='text-sm font-light text-gray-500 mb-2'>
                 <a href={`https://web.whatsapp.com/send?phone=${phone}`} target="_blank" rel="noopener noreferrer"
